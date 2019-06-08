@@ -1,0 +1,25 @@
+<div class="container login-container">
+  <div class="row">
+    <form class="login-form offset-md-3 col-md-6" name="loginForm" (ngSubmit)="login()" novalidate>
+      <fieldset>
+        <legend class="center">Login</legend>
+        <div class="alert alert-dismissible alert-danger" *ngIf="error">
+          <strong>{{error}}</strong>
+        </div>
+        <div class="form-group">
+          <label for="username" class="control-label">Username:</label>
+          <input type="text" class="form-control input-lg" id="username" name="username" placeholder="Username" [(ngModel)]="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password" class="control-label">Password:</label>
+          <input type="password" class="form-control input-lg" id="password" name="password" placeholder="Password" [(ngModel)]="password" required>
+        </div>
+        <div class="form-group center">
+          <button type="submit" class="btn btn-primary">Login</button>&nbsp;&nbsp;
+          <a type="button" class="btn btn-primary" [routerLink]="['/registration']">Registration</a>
+          <br><br>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

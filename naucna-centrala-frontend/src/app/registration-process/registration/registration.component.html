@@ -1,0 +1,17 @@
+<div class="container login-container">
+  <div class="row">
+    <form class="login-form offset-md-2 col-md-8" #f="ngForm" (ngSubmit)="register(f.value)" ngNativeValidate>
+      <fieldset>
+        <legend class="center">Registration</legend>
+        <div class="form-group" *ngFor="let field of formFields">
+          <label for={{field.id}} class="control-label">{{field.label}}:</label>
+          <input type="text" *ngIf="field.type =='String'" class="form-control input-lg" id={{field.id}} name={{field.id}} 
+          placeholder={{field.label}} ngModel required>
+        </div>
+        <div class="form-group center">
+          <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

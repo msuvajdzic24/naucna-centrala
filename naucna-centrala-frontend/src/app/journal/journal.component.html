@@ -1,0 +1,52 @@
+<div class="row justify-content-md-center">
+  <div class="card border-primary box w-50" *ngIf="journal">
+    <div class="card-header">
+      <h2><b>{{journal.name}}</b></h2>
+    </div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <h5 class="card-title"><b>ISBN: </b></h5>
+          <p class="card-subtitle">{{journal.isbn}}</p>
+        </li>
+        <li class="list-group-item">
+          <h5 class="card-title"><b>Type: </b></h5>
+          <p class="card-subtitle">{{journal.type}}</p>
+        </li>
+        <li class="list-group-item">
+          <h5 class="card-title"><b>Scientific areas: </b></h5>
+          <div  *ngFor="let area of journal.areas; let i = index">
+            <p class="card-subtitle">{{area}}</p>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <h5 class="card-title"><b>Chief editor: </b></h5>
+          <p class="card-subtitle">{{journal.chiefEditor}}</p>
+        </li>
+        <li class="list-group-item">
+          <h3 class="card-title"><b>Price: </b>{{journal.editionPrice}} {{journal.currency}}</h3>
+        </li>
+      </ul>
+    </div>
+    <div class="card-footer">
+      <div class="btn-toolbar">
+        <div class="btn-group mr-2" *ngIf="role === 'buyer' && journal.type === 'SUBSCRIPTION' && journal.subscribe">
+          <button class="btn btn-primary" (click)="subscribe()">Subscribe</button>
+        </div>
+        <div class="btn-group mr-2" *ngIf="role === 'buyer' && journal.type === 'SUBSCRIPTION' && !journal.subscribe">
+          <button class="btn btn-danger" (click)="unsubscribe()">Unsubscribe</button>
+        </div> 
+        <div class="btn-group mr-2" *ngIf="role === 'author' && journal.type === 'OPEN_ACCESS' && journal.payMembershipFee">
+          <button class="btn btn-primary" (click)="payMembershipFee()">Pay membership fee</button>
+        </div>
+        <div class="btn-group mr" *ngIf="role === 'buyer' && (!journal.subscribe || journal.type === 'OPEN_ACCESS')">
+          <button class="btn btn-primary" (click)="listArticles()">List articles</button>
+        </div>
+        <div class="btn-group mr" *ngIf="role === 'author' && ((journal.type === 'OPEN_ACCESS' && !journal.payMembershipFee) || 
+          journal.type === 'SUBSCRIPTION')">
+          <button class="btn btn-primary" (click)="addArticle()">Add article</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,91 @@
+<div class="row justify-content-md-center">
+  <form class="col-md-8 box" *ngIf="article" (ngSubmit)="review()">
+    <fieldset>
+      <h2><b>Write review</b></h2>
+      <br>
+      <div class="form-group row">
+        <label for="title" class="control-label col-md-3"><b>Title</b></label>
+        <div class="col-md-9">
+          <input type="text" readonly="" class="form-control-plaintext" id="title" value={{article.title}}>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="keywords" class="control-label col-md-3"><b>Keywords</b></label>
+        <div class="col-md-9">
+          <input type="text" readonly="" class="form-control-plaintext" id="keywords" value={{article.keywords}}>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="abstract" class="control-label col-md-3"><b>Abstract</b></label>
+        <div class="col-md-9">
+          <textarea class="form-control" readonly="" id="abstract" name="abstract" value={{article.articleAbstract}} rows=5></textarea>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="area" class="control-label col-md-3"><b>Area</b></label>
+        <div class="col-md-9">
+          <input type="text" readonly="" class="form-control-plaintext" id="area" value={{article.area}}>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <button type="button" class="btn btn-primary" (click)="download()">Download</button>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="form-group row">
+        <label for="commentEditor" class="control-label col-md-3"><b>Comment for editor</b></label>
+        <div class="col-md-9">
+          <textarea class="form-control" id="commentEditor" name="commentEditor" placeholder="Comment for editor" [(ngModel)]="commentEditor"
+          maxlength="400" rows="5"> </textarea>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="commentAuthor" class="control-label col-md-3"><b>Comment for author</b></label>
+        <div class="col-md-9">
+          <textarea class="form-control" id="commentAuthor" name="commentAuthor" placeholder="Comment for author" [(ngModel)]="commentAuthor"
+          maxlength="400" rows="5"> </textarea>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="suggestion" class="control-label col-md-3"><b>Suggestion</b></label>
+        <div class="col-md-9">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="suggestion" id="suggestion1" [(ngModel)]="suggestion" value="accept" checked="">
+              Accept
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="suggestion" id="suggestion2" [(ngModel)]="suggestion" value="reject">
+              Reject
+            </label>
+          </div>
+          <div class="form-check disabled">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="suggestion" id="suggestion3" [(ngModel)]="suggestion" value="small correction">
+              Small correction
+            </label>
+          </div>
+          <div class="form-check disabled">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="suggestion" id="suggestion4" [(ngModel)]="suggestion" value="big correction">
+              Big correction
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <button type="submit" class="btn btn-primary" [disabled]="commentEditor.trim() === '' || commentAuthor.trim() == ''">
+            Submit review
+          </button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>

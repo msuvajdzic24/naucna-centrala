@@ -1,0 +1,115 @@
+<div class="row justify-content-md-center">
+  <form class="col-md-8 box" [formGroup]="form" (ngSubmit)="submitArticle()">
+    <fieldset>
+      <h2><b>Submit article</b></h2>
+      <br>
+      <div class="form-group row"  *ngIf="journal">
+        <label for="journal" class="control-label col-md-3"><b>Journal</b></label>
+        <div class="col-md-9">
+          <input type="text" readonly="" class="form-control-plaintext" id="jorunal" value={{journal.name}}>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="title" class="control-label col-md-3"><b>Title</b></label>
+        <div class="col-md-9">
+          <input type="text" class="form-control" id="title" name="title" placeholder="Title" [formControl]="form.controls['title']" 
+          [class.is-invalid]="!form.controls['title'].valid && (form.controls['title'].touched || form.controls['title'].dirty)">
+          <div *ngIf="form.controls['title'].hasError('required') && (form.controls['title'].touched || form.controls['title'].dirty)" 
+          class="invalid-feedback">This field is required!</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-md-3"><b>Authors</b></label>
+        <div class="col-md-9"></div>
+        <div class="col-md-12" *ngIf="numberOfAuthors < 4">
+          <br>
+          <div class="form-group row">
+            <label class="control-label offset-md-1 col-md-2">Name</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" id="name" name="name" placeholder="Name" 
+              [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label offset-md-1 col-md-2">Surame</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" id="surname" name="surname" placeholder="Surname"
+              [(ngModel)]="surname" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label offset-md-1 col-md-2">Email</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" id="email" name="emai;" placeholder="Email"
+              [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label offset-md-1 col-md-2">City</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" id="city" name="city" placeholder="City"
+              [(ngModel)]="city" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label offset-md-1 col-md-2">Country</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" id="country" name="country" placeholder="Country"
+              [(ngModel)]="country" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-9">
+              <button type="button" class="btn btn-primary" (click)="addAuthor()">Add author</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row" *ngFor="let a of form.value.authors; let i = index">
+        <div class="col-md-1"></div>
+        <p class="col-md-10"><b>{{i+1}}.</b> {{a.name}} {{a.surname}} ({{a.email}}) - {{a.city}}, {{a.country}}</p>
+        <button type="button" *ngIf="i !== 0" class="btn btn-danger" (click)="removeAuthor(i)">Remove</button>
+      </div>
+      <div class="form-group row">
+        <label for="keywords" class="control-label col-md-3"><b>Keywords</b></label>
+        <div class="col-md-9">
+          <input type="text" class="form-control" id="keywords" name="keywords" placeholder="Keywords" [formControl]="form.controls['keywords']" 
+          [class.is-invalid]="!form.controls['keywords'].valid && (form.controls['keywords'].touched || form.controls['keywords'].dirty)"
+          maxlength="120">
+          <div *ngIf="form.controls['keywords'].hasError('required') && (form.controls['keywords'].touched || form.controls['keywords'].dirty)" 
+          class="invalid-feedback">This field is required!</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="abstract" class="control-label col-md-3"><b>Abstract</b></label>
+        <div class="col-md-9">
+          <textarea class="form-control" id="abstract" name="abstract" placeholder="Abstract" [formControl]="form.controls['abstract']" 
+          [class.is-invalid]="!form.controls['abstract'].valid && (form.controls['abstract'].touched || form.controls['abstract'].dirty)"
+          maxlength="400" rows="5"> </textarea>
+          <div *ngIf="form.controls['abstract'].hasError('required') && (form.controls['abstract'].touched || form.controls['abstract'].dirty)" 
+          class="invalid-feedback">This field is required!</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="area" class="control-label col-md-3"><b>Scienetific area</b></label>
+        <div class="col-md-9">
+          <select class="custom-select" id="area" name="area" [formControl]="form.controls['area']">
+            <option></option>
+            <option *ngFor="let a of areas" [value]="a">{{a}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-3"></div>
+        <input type="file" accept="application/pdf" (change)="loadFile($event)">
+      </div>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <button type="submit" class="btn btn-primary" [disabled]="!form.valid || !file">Submit article</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>

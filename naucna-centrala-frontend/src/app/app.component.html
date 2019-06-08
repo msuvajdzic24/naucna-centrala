@@ -1,0 +1,8 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<router-outlet (activate)="checkRole()">
+    <app-navbar *ngIf="role === 'admin' || role === 'editor' || role === 'reviewer' || 
+        role === 'author' || role === 'buyer'">
+    </app-navbar>
+    <br>
+    <br>
+</router-outlet>

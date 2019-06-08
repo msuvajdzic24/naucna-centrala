@@ -1,0 +1,111 @@
+<div class="row justify-content-md-center">
+  <div class="col-md-10">
+    <h2>Reviewers</h2>
+    <h4 *ngIf="article">Choose new reviewer for article {{article.title}}</h4>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="tab === 'all'" (click)="changeTab('all')">All</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="tab === 'area'" (click)="changeTab('area')">Area</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="tab === 'similar'" (click)="changeTab('similar')">Similar article</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="tab === 'differentRegion'" (click)="changeTab('differentRegion')">Different region</a>
+      </li>
+    </ul>
+
+    <br>
+    <br>
+
+    <table class="table table-hover">
+      <thead>
+        <tr class="table-primary d-flex">
+          <th class="col-md-1">#</th>
+          <th class="col-md-2">Name</th>
+          <th class="col-md-2">Surname</th>
+          <th class="col-md-2">Username</th>
+          <th class="col-md-3">City, Country</th>
+          <th class="col-md-2"></th>
+        </tr>
+      </thead>
+      <tbody *ngIf="tab === 'all' && all">
+        <tr class="table-active d-flex" *ngFor="let reviewer of all; let i = index">
+          <th class="col-md-1">{{i+1}}</th>
+          <td class="col-md-2">{{reviewer.name}}</td>
+          <td class="col-md-2">{{reviewer.surname}}</td>
+          <td class="col-md-2">{{reviewer.username}}</td>
+          <td class="col-md-3">{{reviewer.city}}, {{reviewer.country}}</td>
+          <td class="col-md-2">
+            <button class="btn btn-primary" (click)="addNewReviewer(reviewer.username)" [disabled]="addedNew">
+              Select reviewer
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="tab === 'area' && area">
+        <tr class="table-active d-flex" *ngFor="let reviewer of area; let i = index">
+          <th class="col-md-1">{{i+1}}</th>
+          <td class="col-md-2">{{reviewer.name}}</td>
+          <td class="col-md-2">{{reviewer.surname}}</td>
+          <td class="col-md-2">{{reviewer.username}}</td>
+          <td class="col-md-3">{{reviewer.city}}, {{reviewer.country}}</td>
+          <td class="col-md-2">
+            <button class="btn btn-primary" (click)="addNewReviewer(reviewer.username)" [disabled]="addedNew">
+              Select reviewer
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="tab === 'similar' && similar">
+        <tr class="table-active d-flex" *ngFor="let reviewer of similar; let i = index">
+          <th class="col-md-1">{{i+1}}</th>
+          <td class="col-md-2">{{reviewer.name}}</td>
+          <td class="col-md-2">{{reviewer.surname}}</td>
+          <td class="col-md-2">{{reviewer.username}}</td>
+          <td class="col-md-3">{{reviewer.city}}, {{reviewer.country}}</td>
+          <td class="col-md-2">
+            <button class="btn btn-primary" (click)="addNewReviewer(reviewer.username)" [disabled]="addedNew">
+              Select reviewer
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="tab === 'differentRegion' && differentRegion">
+        <tr class="table-active d-flex" *ngFor="let reviewer of differentRegion; let i = index">
+          <th class="col-md-1">{{i+1}}</th>
+          <td class="col-md-2">{{reviewer.name}}</td>
+          <td class="col-md-2">{{reviewer.surname}}</td>
+          <td class="col-md-2">{{reviewer.username}}</td>
+          <td class="col-md-3">{{reviewer.city}}, {{reviewer.country}}</td>
+          <td class="col-md-2">
+            <button class="btn btn-primary" (click)="addNewReviewer(reviewer.username)" [disabled]="addedNew">
+              Select reviewer
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+    <br>
+    
+    <h4 *ngIf="requiredReviewers">Selected reviewers (required: {{requiredReviewers}})</h4>
+    <div *ngFor="let reviewer of selectedReviewers; let i = index">
+      <p class="col-md-12"><b>{{i+1}}.</b> {{reviewer.username}}</p>
+    </div>
+
+    <br>
+    <br>
+    <h4>New reviewer</h4>
+    <p *ngIf="addedNew" class="col-md-12">{{newReviewer}}
+      <button type="button" class="btn btn-danger" (click)="removeNewReviewer()">Remove</button>
+    </p>
+    <p *ngIf="!addedNew" class="col-md-12">NOT SELECTED</p>
+
+    <br>
+    <button type="button" class="btn btn-primary" [disabled]="!addedNew" (click)="finish()">Finish</button>
+  </div>
+</div>

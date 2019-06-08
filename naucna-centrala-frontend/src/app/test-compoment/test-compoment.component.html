@@ -1,0 +1,66 @@
+<div class=sidebar>
+  <div class="sidebar-inner">
+    <div class="sidebar-logo">
+      <a class="sidebar-link" href="">
+        <div class="logo">
+          <img src="favicon.ico">
+          <h5>LOGO</h5>
+        </div>
+      </a>
+    </div>
+    <ul class="sidebar-menu">
+      <li>
+        <div class="btn-group-vertical col-lg-12" data-toggle="buttons">
+          <div class="btn-group">
+            <button type="button" class="btn btn-outline-primary col-lg-10">Button</button>
+            <button type="button" class="btn btn-outline-primary col-lg-2">></button>
+          </div>
+          <button type="button" class="btn btn-primary">Button</button>
+          <button type="button" class="btn btn-primary active">Button</button>
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary disabled">Button</button>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn btn-outline-primary dropdown-toggle">Button</button>
+          </div>
+          <button type="button" class="btn btn-primary">Button</button>
+          <button type="button" class="btn btn-primary active">Button</button>
+          <button type="button" class="btn btn-primary">Button</button>
+        </div>
+      </li>
+      <li class="nav-item col-md-12">
+        <a class="sidebar-link" href="">
+            <span class="title">A</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class=page-container>
+  <div class="container login-container">
+    <div class="row">
+      <form class="login-form offset-md-3 col-md-6" name="loginForm" (ngSubmit)="logovanje()" novalidate>
+        <fieldset>
+          <legend class="center">Logovanje</legend>
+          <div class="alert alert-dismissible alert-danger" *ngIf="greska">
+            <strong>{{greska}}</strong>
+          </div>
+          <div class="form-group">
+            <label for="username" class="control-label">Username</label>
+            <input type="text" class="form-control input-lg" id="username" name="username" placeholder="Username" [(ngModel)]="username" required>
+          </div>
+          <div class="form-group">
+            <label for="lozinka" class="control-label">Lozinka</label>
+            <input type="password" class="form-control input-lg" id="lozinka" name="lozinka" placeholder="Lozinka" [(ngModel)]="lozinka" required>
+          </div>
+          <div class="form-group center">
+            <button type="submit" class="btn btn-primary">Ulogujte se</button>&nbsp;&nbsp;
+            <button type="button" class="btn btn-primary">Registrujte se</button>
+            <br><br>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+  

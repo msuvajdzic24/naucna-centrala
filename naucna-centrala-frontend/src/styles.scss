@@ -1,0 +1,766 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootswatch/dist/superhero/variables";
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootswatch/dist/superhero/bootswatch";
+@import "~ngx-toastr/toastr";
+
+#toast-container > div {
+  opacity:1;
+}
+
+.login-container{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    //background-color: $gray-200;
+    padding: 30px;
+}
+.login-form{
+    padding: 5%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.center {
+    text-align: center
+}
+button {
+    cursor: not-allowed;
+}
+.line-breaker {
+    white-space: pre-wrap;
+}
+
+.box {
+  // border-radius: 10px;
+  //background-color: $gray-200;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+  padding: 30px;
+}
+
+// ---------------------------------------------------------
+// @TOC
+// ---------------------------------------------------------
+
+// + @Greyscale Colors
+// + @Bootstrap Color System
+// + @Default Colors
+// + @Inverted Colors
+// + @Others
+// + @Header Themes
+// + @Social Networks Colors
+
+// ---------------------------------------------------------
+// @Greyscale Colors
+// ---------------------------------------------------------
+
+// Colors below are ordered from lightest to darkest
+
+$grey-100             : #f9fafb;
+$grey-200             : #f2f3f5;
+$grey-300             : #e6eaf0;
+$grey-400             : #d3d9e3;
+$grey-500             : #b9c2d0;
+$grey-600             : #7c8695;
+$grey-700             : #72777a;
+$grey-800             : #565a5c;
+$grey-900             : #313435;
+
+$grey-colors-alt: (
+  grey-100 : #f9fafb,
+  grey-200 : #f2f3f5,
+  grey-300 : #e6eaf0,
+  grey-400 : #d3d9e3,
+  grey-500 : #b9c2d0,
+  grey-600 : #7c8695,
+  grey-700 : #72777a,
+  grey-800 : #565a5c,
+  grey-900 : #313435,
+);
+
+// ---------------------------------------------------------
+// @Bootstrap Color System
+// ---------------------------------------------------------
+
+$blue:    #007bff !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #e83e8c !default;
+$red:     #dc3545 !default;
+$orange:  #fd7e14 !default;
+$yellow:  #ffc107 !default;
+$green:   #28a745 !default;
+$teal:    #20c997 !default;
+$cyan:    #17a2b8 !default;
+
+// ---------------------------------------------------------
+// @Default Colors
+// ---------------------------------------------------------
+
+$default-danger       : #ff3c7e;
+$default-dark         : #313435;
+$default-grey         : #565a5c;
+$default-info         : #0f9aee;
+$default-primary      : #7774e7;
+$default-success      : #37c936;
+$default-text-color   : #72777a;
+$default-warning      : #fc0;
+$default-white        : #fff;
+
+// ---------------------------------------------------------
+// @Inverted Colors
+// ---------------------------------------------------------
+
+$inverse-danger       : lighten($default-danger, 35%);
+$inverse-info         : lighten($default-info, 45%);
+$inverse-primary      : lighten($default-primary, 30%);
+$inverse-success      : lighten($default-success, 45%);
+$inverse-warning      : lighten($default-warning, 45%);
+
+// ---------------------------------------------------------
+// @Others
+// ---------------------------------------------------------
+
+$border-color         : #e6ecf5;
+$collapsed-size       : 70px;
+$header-height        : 65px;
+$offscreen-size       : 280px;
+$side-nav-dark        : #313644;
+$side-nav-dark-border : rgba(120, 130, 140, 0.3);
+$side-nav-dark-font   : #99abb4;
+
+// ---------------------------------------------------------
+// @Header Themes
+// ---------------------------------------------------------
+
+$theme-danger         : #f53f61;
+$theme-dark           : lighten($side-nav-dark, 10%);
+$theme-info           : $default-info;
+$theme-primary        : $default-primary;
+$theme-success : desaturate($default-success, 5%);
+
+// ---------------------------------------------------------
+// @Breakpoints
+// ---------------------------------------------------------
+
+$breakpoint-xl : 1440px;
+$breakpoint-lg : 1200px;
+$breakpoint-md : 992px;
+$breakpoint-sm : 768px;
+$breakpoint-xs : 0;
+
+$breakpoints: (
+  "xl\\+" "screen and (min-width: #{$breakpoint-xl})",
+  "lg\\+" "screen and (min-width: #{$breakpoint-lg})",
+  "md\\+" "screen and (min-width: #{$breakpoint-md})",
+  "sm\\+" "screen and (min-width: #{$breakpoint-sm})",
+  "xs\\+" "screen and (min-width: #{$breakpoint-xs})",
+
+  "xl-" "screen and (max-width: #{$breakpoint-xl - 1px})",
+  "lg-" "screen and (max-width: #{$breakpoint-lg - 1px})",
+  "md-" "screen and (max-width: #{$breakpoint-md - 1px})",
+  "sm-" "screen and (max-width: #{$breakpoint-sm - 1px})",
+
+  "lg" "screen and (min-width: #{$breakpoint-lg - 1px}) and (max-width: #{$breakpoint-xl - 1px})",
+  "md" "screen and (min-width: #{$breakpoint-md - 1px}) and (max-width: #{$breakpoint-lg - 1px})",
+  "sm" "screen and (min-width: #{$breakpoint-sm - 1px}) and (max-width: #{$breakpoint-md - 1px})",
+);
+
+// + @General Media Query
+// + @All Above Media Query
+// + @All Under Media Query
+// + @Between Two Devices Media Query
+
+// ---------------------------------------------------------
+// @General Media Query Mixin
+// ---------------------------------------------------------
+
+// Mixin used for custom rules that don't follow
+// any of the following premade media queries.
+
+@mixin mq($condition) {
+    @media #{$condition} {
+      @content;
+    }
+  }
+  
+  // ---------------------------------------------------------
+  // @All Above Media Query Mixin
+  // ---------------------------------------------------------
+  
+  // Mixin used to match certain breakpoint
+  // and all devices above it.
+  
+  @mixin from($breakpoint) {
+    @media screen and (min-width: $breakpoint){
+      @content;
+    }
+  }
+  
+  // ---------------------------------------------------------
+  // @All Under Media Query Mixin
+  // ---------------------------------------------------------
+  
+  // Mixin used to match all devices under certain breakpoint.
+  
+  @mixin to($breakpoint) {
+    @media screen and (max-width: $breakpoint - 1px) {
+      @content;
+    }
+  }
+  
+  // ---------------------------------------------------------
+  // @Between Two Devices Media Query Mixin
+  // ---------------------------------------------------------
+  
+  // Mixin used to match the devices between 2 breakpoints.
+  
+  @mixin between($start, $end){
+    @media screen and (min-width: $start) and (max-width: $end - 1px) {
+      @content;
+    }
+  }
+
+
+// ---------------------------------------------------------
+// @TOC
+// ---------------------------------------------------------
+
+// + @Sidebar
+// + @Sidebar Inner
+// + @Sidebar Header
+// + @Sidebar Menu
+// + @Sidebar Collapsed
+
+// ---------------------------------------------------------
+// @Sidebar
+// ---------------------------------------------------------
+
+.sidebar {
+  background-color: $default-white;
+  bottom: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  transition: all 0.2s ease;
+  width: $offscreen-size;
+  z-index: 1000;
+
+  ul {
+    list-style-type: none;
+  }
+
+  @include between($breakpoint-md, $breakpoint-xl) {
+    width: $collapsed-size;
+
+    .sidebar-inner {
+      .sidebar-logo {
+        border-bottom: 1px solid transparent;
+        padding: 0;
+
+        a {
+          .logo {
+            background-position: center center;
+            width: $collapsed-size;
+          }
+        }
+      }
+
+      .sidebar-menu {
+        overflow-x: hidden;
+
+        > li {
+          > a {
+            .title {
+              display: none;
+            }
+          }
+        }
+
+        li {
+          &.dropdown {
+            .arrow {
+              opacity: 0;
+            }
+
+            &.open {
+              ul.dropdown-menu {
+                display: none !important;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &:hover {
+      width: $offscreen-size;
+
+      .sidebar-inner {
+        .sidebar-logo {
+          border-bottom: 1px solid $border-color;
+          padding: 0 20px;
+        }
+
+        .sidebar-menu {
+          > li {
+            > a {
+              .title {
+                display: inline-block;
+              }
+            }
+          }
+
+          li {
+            &.dropdown {
+              .arrow {
+                opacity: 1;
+              }
+            }
+
+            &.open {
+              > ul.dropdown-menu {
+                display: block !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include to($breakpoint-md) {
+    left: -$offscreen-size;
+    width: calc(#{$offscreen-size} - 30px);
+  }
+}
+
+// ---------------------------------------------------------
+// @Sidebar Inner
+// ---------------------------------------------------------
+
+.sidebar-inner {
+  position: relative;
+  height: 100%;
+}
+
+// ---------------------------------------------------------
+// @Sidebar Header
+// ---------------------------------------------------------
+
+.sidebar-logo {
+  border-bottom: 1px solid $border-color;
+  border-right: 1px solid $border-color;
+  line-height: 0;
+  padding: 0 20px;
+  transition: all 0.2s ease;
+
+  a {
+    display: inline-block;
+    width: 100%;
+
+    .logo {
+      background-position: center left;
+      background-repeat: no-repeat;
+      display: inline-block;
+      min-height: calc(#{$header-height} - 1px);
+      width: 100%;
+      width: 70px;
+    }
+
+    .logo-text {
+      color: $grey-900;
+    }
+  }
+
+  .mobile-toggle {
+    display: none;
+    float: right;
+    font-size: 18px;
+    line-height: calc(#{$header-height} - 1px);
+
+    a {
+      color: $default-text-color;
+    }
+
+    @include to($breakpoint-md) {
+      display: inline-block;
+    }
+
+    @include between($breakpoint-md, $breakpoint-xl) {
+      display: none;
+    }
+  }
+}
+
+// ---------------------------------------------------------
+// @Sidebar Menu
+// ---------------------------------------------------------
+
+.sidebar-menu {
+  @include clearfix;
+  border-right: 1px solid $border-color;
+  height: calc(100vh - #{$header-height});
+  list-style: none;
+  margin: 0;
+  overflow: auto;
+  padding: 0;
+  position: relative;
+
+  .dropdown-toggle::after {
+    display: none;
+  }
+
+  .sidebar-link {
+    &.active::before {
+      background: $blue;
+      border-radius: 50%;
+      content: '';
+      display: block;
+      height: 8px;
+      left: -4px;
+      position: absolute;
+      top: calc(50% - 4px);
+      width: 8px;
+    }
+  }
+
+  li {
+    position: relative;
+
+    &.dropdown {
+      .arrow {
+        font-size: 10px;
+        line-height: 40px;
+        position: absolute;
+        right: 30px;
+        transition: all 0.05s ease-in;
+
+        @include to($breakpoint-md) {
+          right: 25px;
+        }
+      }
+
+      &.open {
+        > a {
+          color: $default-dark;
+
+          .icon-holder {
+            color: $default-info;
+          }
+
+          > .arrow {
+            transform: rotate(90deg);
+          }
+        }
+
+        > .dropdown-menu {
+          display: block;
+
+          .dropdown-menu {
+            padding-left: 20px;
+          }
+
+          .arrow {
+            line-height: 25px;
+          }
+        }
+      }
+    }
+
+    a {
+      color: $default-text-color;
+      transition: all 0.3s ease;
+
+      &:hover,
+      &:focus {
+        color: $default-dark;
+        text-decoration: none;
+
+        .icon-holder {
+          color: $default-info;
+        }
+      }
+    }
+  }
+
+  > li {
+    &.dropdown {
+      ul {
+        &.dropdown-menu {
+          background-color: transparent;
+          border-radius: 0;
+          border: 0;
+          box-shadow: none;
+          float: none;
+          padding-left: 50px;
+          padding-top: 0;
+          position: relative;
+          width: 100%;
+
+          > li {
+            > a {
+              display: block;
+              padding: 10px 15px;
+
+              &:hover,
+              &:focus {
+                background-color: transparent;
+                color: $default-dark;
+              }
+            }
+
+            &.active {
+              a {
+                color: $default-dark;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    > a {
+      display: block;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 5px 15px;
+      position: relative;
+      white-space: nowrap;
+
+      .icon-holder {
+        border-radius: 6px;
+        display: inline-block;
+        font-size: 17px;
+        height: 35px;
+        left: 0;
+        line-height: 35px;
+        margin-right: 14px;
+        position: relative;
+        text-align: center;
+        transition: all 0.3s ease;
+        width: 35px;
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------
+// @Sidebar Collapsed
+// ---------------------------------------------------------
+
+.is-collapsed {
+  .sidebar {
+    @include from($breakpoint-xl) {
+      width: $collapsed-size;
+
+      .sidebar-inner {
+        .sidebar-logo {
+          border-bottom: 1px solid transparent;
+          padding: 0;
+        }
+
+        .sidebar-menu {
+          overflow-x: hidden;
+
+          > li {
+            > a {
+              .title {
+                display: none;
+              }
+            }
+          }
+
+          li {
+            &.dropdown {
+              .arrow {
+                opacity: 0;
+              }
+
+              &.open {
+                ul.dropdown-menu {
+                  display: none !important;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &:hover {
+        width: $offscreen-size;
+
+        .sidebar-inner {
+          .sidebar-logo {
+            border-bottom: 1px solid $border-color;
+            padding: 0 20px;
+          }
+
+          .sidebar-menu {
+            > li {
+              > a {
+                .title {
+                  display: inline-block;
+                }
+              }
+            }
+
+            li {
+              &.dropdown {
+                .arrow {
+                  opacity: 1;
+                }
+              }
+
+              &.open {
+                > ul.dropdown-menu {
+                  display: block !important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @include between($breakpoint-md, $breakpoint-xl) {
+      width: $offscreen-size;
+
+      .sidebar-inner {
+        .sidebar-logo {
+          border-bottom: 1px solid $border-color;
+          padding: 0 20px;
+
+          > a {
+            .logo {
+              background-position: center left;
+              width: 150px;
+            }
+          }
+        }
+
+        .sidebar-menu {
+          > li {
+            > a {
+              .title {
+                display: inline-block;
+              }
+            }
+          }
+
+          li {
+            &.dropdown {
+              .arrow {
+                opacity: 1;
+              }
+            }
+
+            &.open {
+              > ul.dropdown-menu {
+                display: block !important;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @include to($breakpoint-md) {
+      left: 0;
+    }
+  }
+}
+
+// ---------------------------------------------------------
+// @TOC
+// ---------------------------------------------------------
+
+// + @Page Container
+// + @Main Content
+// + @Full Container
+// + @Collapsed State
+
+// ---------------------------------------------------------
+// @Page Container
+// ---------------------------------------------------------
+
+.page-container {
+    min-height: 100vh;
+    padding-left: $offscreen-size;
+    transition: all 0.2s ease;
+
+    @include between($breakpoint-md, $breakpoint-xl) {
+    padding-left: $collapsed-size;
+    }
+
+    @include to($breakpoint-md) {
+    padding-left: 0;
+    }
+}
+    
+// ---------------------------------------------------------
+// @Main Content
+// ---------------------------------------------------------
+
+.main-content {
+    padding: 85px 20px 20px;
+    min-height: calc(100vh - 61px);
+
+    @include to($breakpoint-md) {
+    padding: 85px 5px 5px;
+    }
+}
+
+.remain-height {
+    height: calc(100vh - 126px);
+}
+
+// ---------------------------------------------------------
+// @Full Container
+// ---------------------------------------------------------
+
+.full-container {
+    left: $offscreen-size;
+    min-height: calc(100vh - #{$header-height});
+    position: absolute;
+    right: 0;
+    top: $header-height;
+    transition: all 0.2s ease;
+
+    @include between($breakpoint-md, $breakpoint-xl) {
+    left: 0;
+    padding-left: $collapsed-size;
+    }
+
+    @include to($breakpoint-md) {
+    left: 0;
+    }
+}
+
+// ---------------------------------------------------------
+// @Collapsed State
+// ---------------------------------------------------------
+
+.is-collapsed {
+    .page-container {
+    padding-left: $collapsed-size;
+
+    @include to($breakpoint-md) {
+        padding-left: 0;
+    }
+
+    @include between($breakpoint-md, $breakpoint-xl) {
+        padding-left: $offscreen-size;
+    }
+    }
+
+    .full-container {
+    left: $collapsed-size;
+
+    @include to($breakpoint-md) {
+        left: 0;
+    }
+
+    @include between($breakpoint-md, $breakpoint-xl) {
+        left: $offscreen-size;
+        padding-left: 0;
+    }
+    }
+}

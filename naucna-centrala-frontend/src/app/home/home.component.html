@@ -1,0 +1,47 @@
+<div class="row justify-content-md-center">
+  <div class="col-md-10">
+    <div *ngIf="role === 'author' || role === 'editor' || role === 'reviewer'">
+      <div *ngIf="tasks">
+        <h2 *ngIf="tasks.length !== 0">Tasks:</h2>
+        <h2 *ngIf="tasks.length === 0">No tasks</h2>
+        <div class="list-group" *ngFor="let task of tasks; let i = index">
+          <a *ngIf="task.name === 'Izvrsenje uplate'" [routerLink]="['/payMembershipFee', task.id]" class="list-group-item list-group-item-action">
+            Pay membership fee
+          </a>
+          <a *ngIf="task.name === 'Unos informacija o radu'" [routerLink]="['/submitArticle', task.id]" class="list-group-item list-group-item-action">
+            Submit article
+          </a>
+          <a *ngIf="task.name === 'Pregled rada'" [routerLink]="['/reviewRequest', task.id]" class="list-group-item list-group-item-action">
+            Review request
+          </a>
+          <a *ngIf="task.name === 'Korekcija rada'" [routerLink]="['/resubmitArticle', task.id]" class="list-group-item list-group-item-action">
+            Resubmit article
+          </a>
+          <a *ngIf="task.name === 'Odabir recezenata'" [routerLink]="['/chooseReviewers', task.id]" class="list-group-item list-group-item-action">
+            Choose reviewers
+          </a>
+          <a *ngIf="task.name === 'Odabir novog recezenta'" [routerLink]="['/chooseNewReviewer', task.id]" class="list-group-item list-group-item-action">
+            Choose new reviewers
+          </a>
+          <a *ngIf="task.name === 'Unos recenzije'" [routerLink]="['/review', task.id]" class="list-group-item list-group-item-action">
+            Review
+          </a>
+          <a *ngIf="task.name === 'Analiza recenzija'" [routerLink]="['/analyzeReviews', task.id]" class="list-group-item list-group-item-action">
+            Analyze reviews
+          </a>
+          <a *ngIf="task.name === 'Unos ispravki'" [routerLink]="['/correction', task.id]" class="list-group-item list-group-item-action">
+            Final article correction
+          </a>
+        </div> 
+      </div>
+      <div *ngIf="tasks === null || tasks === undefined">
+        <h2>No tasks</h2>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div *ngIf="role === 'author'">
+      <button type="button" class="btn btn-primary" (click)="publishArticle()">Publish article</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="row justify-content-md-center">
+  <form class="col-md-8 box" [formGroup]="form" (ngSubmit)="submitCorrection()">
+    <fieldset>
+      <h2><b>Submit correction</b></h2>
+      <br>
+      <h3>Reviews</h3>
+      <div *ngFor="let review of reviews; let i = index">
+        <h4>Review {{i+1}}</h4>
+        <div class="form-group row">
+          <label for="comment" class="control-label col-md-3"><b>Comment</b></label>
+          <div class="col-md-9">
+            <textarea class="form-control" readonly="" id="comment" name="comment" value={{review.comment}} rows=5></textarea>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="form-group row" *ngIf="journal">
+        <label for="journal" class="control-label col-md-3"><b>Journal</b></label>
+        <div class="col-md-9">
+          <input type="text" readonly="" class="form-control-plaintext" id="jorunal" value={{journal.name}}>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="title" class="control-label col-md-3"><b>Title</b></label>
+        <div class="col-md-9">
+          <input type="text" class="form-control" id="title" name="title" placeholder="Title" [formControl]="form.controls['title']" 
+          [class.is-invalid]="!form.controls['title'].valid && (form.controls['title'].touched || form.controls['title'].dirty)">
+          <div *ngIf="form.controls['title'].hasError('required') && (form.controls['title'].touched || form.controls['title'].dirty)" 
+          class="invalid-feedback">This field is required!</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="keywords" class="control-label col-md-3"><b>Keywords</b></label>
+        <div class="col-md-9">
+          <input type="text" class="form-control" id="keywords" name="keywords" placeholder="Keywords" [formControl]="form.controls['keywords']" 
+          [class.is-invalid]="!form.controls['keywords'].valid && (form.controls['keywords'].touched || form.controls['keywords'].dirty)"
+          maxlength="120">
+          <div *ngIf="form.controls['keywords'].hasError('required') && (form.controls['keywords'].touched || form.controls['keywords'].dirty)" 
+          class="invalid-feedback">This field is required!</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="abstract" class="control-label col-md-3"><b>Abstract</b></label>
+        <div class="col-md-9">
+          <textarea class="form-control" id="abstract" name="abstract" placeholder="Abstract" [formControl]="form.controls['abstract']" 
+          [class.is-invalid]="!form.controls['abstract'].valid && (form.controls['abstract'].touched || form.controls['abstract'].dirty)"
+          maxlength="400" rows="5"> </textarea>
+          <div *ngIf="form.controls['abstract'].hasError('required') && (form.controls['abstract'].touched || form.controls['abstract'].dirty)" 
+          class="invalid-feedback">This field is required!</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="authorMessage" class="control-label col-md-3"><b>Author message</b></label>
+        <div class="col-md-9">
+          <textarea class="form-control" id="authorMessage" name="authorMessage" placeholder="Author message" 
+          [formControl]="form.controls['authorMessage']" 
+          [class.is-invalid]="!form.controls['authorMessage'].valid && (form.controls['authorMessage'].touched || form.controls['authorMessage'].dirty)"
+          maxlength="400" rows="5"> </textarea>
+          <div *ngIf="form.controls['authorMessage'].hasError('required') && (form.controls['authorMessage'].touched || form.controls['authorMessage'].dirty)" 
+          class="invalid-feedback">This field is required!</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-3"></div>
+        <input type="file" accept="application/pdf" (change)="loadFile($event)">
+      </div>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <button type="submit" class="btn btn-primary" [disabled]="!form.valid || !file">Resubmit article</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+  

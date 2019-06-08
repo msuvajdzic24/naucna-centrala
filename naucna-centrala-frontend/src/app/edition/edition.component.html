@@ -1,0 +1,31 @@
+<div class="row justify-content-md-center">
+  <!--div class="col-md-8" *ngIf="edition">
+    <h2>{{edition.journal}} Edition {{edition.number}}</h2>
+    <h3>{{edition.price}} {{edition.currency}}</h3>
+    <button class="btn btn-primary" (click)="pay()" *ngIf="edition.pay">buy</button>
+    <button class="btn btn-primary" (click)="listArticles()" *ngIf="!edition.pay">List articles</button>
+  </div-->
+
+  <div class="card border-primary box w-50" *ngIf="edition">
+    <div class="card-header">
+      <h2><b>{{edition.journal}} Edition {{edition.number}}</b></h2>
+    </div>
+    <div class="card-body" *ngIf="edition.buy">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <h5 class="card-title"><h3><b>Price: </b>{{edition.price}} {{edition.currency}}</h3></h5>
+        </li>
+      </ul>
+    </div>
+    <div class="card-footer">
+      <div class="btn-toolbar">
+        <div class="btn-group mr-2" *ngIf="edition.buy">
+          <button class="btn btn-primary" (click)="buy()">Buy</button>
+        </div>
+        <div class="btn-group mr-2" *ngIf="!edition.buy">
+          <button class="btn btn-primary" (click)="listArticles()">List articles</button>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>

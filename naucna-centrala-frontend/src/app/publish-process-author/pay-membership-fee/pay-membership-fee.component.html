@@ -1,0 +1,12 @@
+<div class="row justify-content-md-center">
+  <form class="col-md-8 box" *ngIf="journal">
+    <h2><b>Pay membership fee for journal "{{journal.name}}"</b></h2>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <button type="button" class="btn btn-success" (click)="successfulPayment()">Successful payment</button>&nbsp;
+        <button type="button" class="btn btn-danger" (click)="unsuccessfulPayment()">Unsuccessful payment</button>&nbsp;
+      </div>
+    </div>
+  </form>
+</div>

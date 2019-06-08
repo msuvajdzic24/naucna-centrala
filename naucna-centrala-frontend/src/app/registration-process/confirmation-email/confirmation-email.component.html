@@ -1,0 +1,15 @@
+<div class="container login-container">
+  <div class="row">
+    <form class="login-form offset-md-3 col-md-6" name="form" novalidate>
+      <fieldset>
+        <div class="form-group">
+          <h3 for="success" *ngIf="success">Email confirmed!</h3>
+          <h3 for="failure" *ngIf="!success">Wrong request!</h3>
+        </div>
+        <div class="form-group">
+          <a [routerLink]="['/login']">Go to login page</a>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

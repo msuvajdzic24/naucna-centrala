@@ -1,0 +1,27 @@
+Registracija
+forma za registraciju (username, password, email, name, surname, city, country)
+userId
+
+Objava rada
+author (username autora)
+journalId
+journalType
+membershipFee
+payment
+chiefEditor (username glavnog urednika)
+users (korisnici kojima se salje obavestenje o poslatom radu - username od autora i glavnog urednika)
+articleId
+relevant
+properlyFormatted
+comment (komentar glavnog editora na rad)
+editor (username urednika)
+numberOfReviewers - broj recezenata koje treba izabrati
+reviewersFinish - lista recezenata (username) koji su zavrsili recenziju
+reviewers (odabrani recezenti - username)
+authorMessage - komntar autora na recenzije 
+firstCycle - da li su prvi put pisane recenzije
+
+Lokalne varijable recenzije
+reviewer (username recezenta)
+alreadyWritten - da li je recenzija vec napisana
+forma za recenziju (commendEditor, commentAuthor, suggestion)

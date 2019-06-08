@@ -1,0 +1,30 @@
+<div class="row justify-content-md-center" *ngIf="journals && taskId">
+  <div class="col-md-10">
+    <h2>Journals</h2>
+    <h4>Choose journal in which you want to publish article</h4>
+    <table class="table table-hover" *ngIf="journals.length !== 0">
+      <thead>
+        <tr class="table-primary d-flex">
+          <th class="col-md-1">#</th>
+          <th class="col-md-6">Name</th>
+          <th class="col-md-1">Type</th>
+          <th class="col-md-2">Membership fee price</th>
+          <th class="col-md-2"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-active d-flex" *ngFor="let journal of journals; let i = index">
+          <th class="col-md-1">{{i+1}}</th>
+          <td class="col-md-6">{{journal.name}}</td>
+          <td class="col-md-1" *ngIf="journal.type === 'OPEN_ACCESS'">Open access</td>
+          <td class="col-md-1" *ngIf="journal.type === 'SUBSCRIPTION'">Subscription</td>
+          <td class="col-md-2" *ngIf="journal.type === 'OPEN_ACCESS'">{{journal.editionPrice}} {{journal.currency}}</td>
+          <td class="col-md-2" *ngIf="journal.type === 'SUBSCRIPTION'"></td>
+          <td class="col-md-2">
+            <button class="btn btn-primary" (click)="addArticle(i)">Add article</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

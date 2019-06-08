@@ -1,0 +1,55 @@
+<div class="row justify-content-md-center">
+  <form class="col-md-8 box" *ngIf="article">
+    <fieldset>
+      <h2><b>Review request for publication of scientific article</b></h2>
+      <br>
+      <div class="form-group row">
+        <label for="title" class="control-label col-md-3"><b>Title</b></label>
+        <div class="col-md-9">
+          <input type="text" readonly="" class="form-control-plaintext" id="title" value={{article.title}}>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="keywords" class="control-label col-md-3"><b>Keywords</b></label>
+        <div class="col-md-9">
+          <input type="text" readonly="" class="form-control-plaintext" id="keywords" value={{article.keywords}}>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="abstract" class="control-label col-md-3"><b>Abstract</b></label>
+        <div class="col-md-9">
+          <textarea class="form-control" readonly="" id="abstract" name="abstract" value={{article.articleAbstract}} rows=5></textarea>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="area" class="control-label col-md-3"><b>Area</b></label>
+        <div class="col-md-9">
+          <input type="text" readonly="" class="form-control-plaintext" id="area" value={{article.area}}>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <button type="button" class="btn btn-primary" (click)="download()">Download</button>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="form-group row">
+        <label for="comment" class="control-label col-md-3"><b>Comment (optional)</b></label>
+        <div class="col-md-9">
+          <textarea class="form-control" id="comment" name="comment" placeholder="Comment for author" [(ngModel)]="comment"
+          maxlength="400" rows="5"> </textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <button type="button" class="btn btn-success" (click)="accept()">Accept request</button>
+          <button type="button" class="btn btn-primary" (click)="correction()" [disabled]="comment.trim() === ''">Send to correction</button>
+          <button type="button" class="btn btn-danger" (click)="decline()">Decline request</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
