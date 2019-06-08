@@ -1,11 +1,5 @@
 <div class="row justify-content-md-center">
-  <!--div class="col-md-8" *ngIf="edition">
-    <h2>{{edition.journal}} Edition {{edition.number}}</h2>
-    <h3>{{edition.price}} {{edition.currency}}</h3>
-    <button class="btn btn-primary" (click)="pay()" *ngIf="edition.pay">buy</button>
-    <button class="btn btn-primary" (click)="listArticles()" *ngIf="!edition.pay">List articles</button>
-  </div-->
-
+  
   <div class="card border-primary box w-50" *ngIf="edition">
     <div class="card-header">
       <h2><b>{{edition.journal}} Edition {{edition.number}}</b></h2>
