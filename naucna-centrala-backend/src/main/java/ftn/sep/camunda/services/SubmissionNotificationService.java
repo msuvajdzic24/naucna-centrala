@@ -24,14 +24,7 @@ public class SubmissionNotificationService implements JavaDelegate {
 
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {
-		
-		/*Set<String> set = execution.getVariableNamesLocal();
-		for (String string : set) {
-			System.out.println("LOCAL VARIABLES: " + string);
-		}
-		System.out.println("LOCAL VARIABLE: " + execution.getVariableLocal("user"));
-		System.out.println("LOCAL VARIABLE: " + execution.getVariableLocal("loopCounter"));*/
-		
+			
 		String username = (String) execution.getVariableLocal("user");
 		User user = this.userRepository.findByUsername(username).get();
 		String authorUsername = (String) execution.getVariable("author");

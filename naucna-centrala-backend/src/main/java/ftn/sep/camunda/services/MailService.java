@@ -18,13 +18,13 @@ public class MailService {
 	
 	@Async
 	public void sendMail(String to, String subject, String text) {
-        /*final SimpleMailMessage email = new SimpleMailMessage();
+        final SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(to);
         email.setSubject(subject);
         email.setText(text);
         email.setFrom(env.getProperty("support.email"));
        
-        this.mailSender.send(email);*/
+        this.mailSender.send(email);
 		
 		System.out.println("POSLAT MAIL");
 		System.out.println("To: " + to);

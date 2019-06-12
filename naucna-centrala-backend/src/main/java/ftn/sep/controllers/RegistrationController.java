@@ -77,26 +77,6 @@ public class RegistrationController {
 		
 		return new ResponseEntity<>("Successfully registration!", HttpStatus.OK);
 	}
-		
-	@GetMapping(path = "/confirmEmail/{processId}", produces = "application/text")
-	public ResponseEntity<?> confirmEmail(@PathVariable("processId") String processId) {
-				
-		TaskDto task;
-		try{
-			task = this.restService.getNextTask(processId);
-		} catch(Exception e) {
-			throw new BadRequestException("No email for confirmation!");
-		}
-
-
-		Integer id = (Integer) this.restService.getVariable(processId, "userId").getValue();
-		Long authorId = id.longValue();
-		this.registrationService.confirmEmail(authorId);
-		
-		this.restService.completeTask(task.getId());
-		
-		return new ResponseEntity<>("Email successfully confirmed!", HttpStatus.OK);
-	}
 	
 	private Map<String, VariableValueDto> mapListToDto(List<DTOFormSubmission> list) {
 		

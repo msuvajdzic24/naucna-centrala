@@ -10,7 +10,7 @@ public class IndexingService implements JavaDelegate {
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {
 		
-		System.out.println("INDEKSIRANJE RADA");
+		System.out.println("INDEKSIRANJE RADA ZAVRSENO");
 		
 	}
 

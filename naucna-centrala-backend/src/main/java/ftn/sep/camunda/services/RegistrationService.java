@@ -53,7 +53,7 @@ public class RegistrationService implements JavaDelegate {
 	    // samo autor moze da se registruje trenutno
 		Role role = this.RoleRepository.findByName("author");
 		author.getRoles().add(role);
-		author.setActivated(false);
+		author.setActivated(true);
 		this.authorRepository.save(author);
 		execution.setVariable("userId", author.getId());
 	}

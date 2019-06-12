@@ -44,7 +44,6 @@ public class PublishUtilController {
 	@Autowired
 	private JournalService journalService;
 	
-	// ovo bi trebalo da ide u service
 	@Autowired
 	private AuthorRepository authorRepository;
 	
@@ -55,7 +54,7 @@ public class PublishUtilController {
 		VariableValueDto vv = new VariableValueDto();
 		vv.setValue(authentication.getName());
 		variables.put("author", vv);
-		ProcessInstanceDto pi = this.restService.startProcess("Objava_rada", variables);
+		ProcessInstanceDto pi = this.restService.startProcess("Glavni_proces", variables);
 	
 		TaskDto task = this.restService.getNextTask(pi.getId());
 		
