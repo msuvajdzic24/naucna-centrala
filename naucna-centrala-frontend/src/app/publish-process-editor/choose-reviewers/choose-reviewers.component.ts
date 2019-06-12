@@ -1,3 +1,4 @@
+import { UtilService } from './../../services/util/util.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PublishService } from 'src/app/services/publish/publish.service';
@@ -21,14 +22,16 @@ export class ChooseReviewersComponent implements OnInit {
   requiredReviewers: number;
   selectedNumber: number;
   selectedReviewers: any;
+  username: any;
 
   constructor(
     private route: ActivatedRoute,
     private publishService: PublishService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private utilService: UtilService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.route.params.subscribe(
       params => {
         this.taskId = params['taskId'];
@@ -37,6 +40,7 @@ export class ChooseReviewersComponent implements OnInit {
     this.tab = "all";
     this.selectedNumber = 0;
     this.selectedReviewers = [];
+    this.username = await this.utilService.getUsername();
     this.getReviewers();
   }
 
@@ -46,9 +50,9 @@ export class ChooseReviewersComponent implements OnInit {
         console.log(result)
         this.requiredReviewers = result.numberOfReviewers;
         this.all = result.all;
+        this.all = this.all.filter(element => element.username != this.username);
         this.area = result.area;
-        this.similar = result.similar;
-        this.differentRegion = result.differentRegion;
+        this.area = this.area.filter(element => element.username != this.username);
         for (let reviewerUsername of result.choosenReviewers) { 
           let obj = {
             "username": reviewerUsername,

@@ -9,12 +9,6 @@
       <li class="nav-item">
         <a class="nav-link" [class.active]="tab === 'area'" (click)="changeTab('area')">Area</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" [class.active]="tab === 'similar'" (click)="changeTab('similar')">Similar article</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [class.active]="tab === 'differentRegion'" (click)="changeTab('differentRegion')">Different region</a>
-      </li>
     </ul>
 
     <br>
@@ -47,34 +41,6 @@
       </tbody>
       <tbody *ngIf="tab === 'area' && area">
         <tr class="table-active d-flex" *ngFor="let reviewer of area; let i = index">
-          <th class="col-md-1">{{i+1}}</th>
-          <td class="col-md-2">{{reviewer.name}}</td>
-          <td class="col-md-2">{{reviewer.surname}}</td>
-          <td class="col-md-2">{{reviewer.username}}</td>
-          <td class="col-md-3">{{reviewer.city}}, {{reviewer.country}}</td>
-          <td class="col-md-2">
-            <button class="btn btn-primary" (click)="addNewReviewer(reviewer.username)" [disabled]="addedNew">
-              Select reviewer
-            </button>
-          </td>
-        </tr>
-      </tbody>
-      <tbody *ngIf="tab === 'similar' && similar">
-        <tr class="table-active d-flex" *ngFor="let reviewer of similar; let i = index">
-          <th class="col-md-1">{{i+1}}</th>
-          <td class="col-md-2">{{reviewer.name}}</td>
-          <td class="col-md-2">{{reviewer.surname}}</td>
-          <td class="col-md-2">{{reviewer.username}}</td>
-          <td class="col-md-3">{{reviewer.city}}, {{reviewer.country}}</td>
-          <td class="col-md-2">
-            <button class="btn btn-primary" (click)="addNewReviewer(reviewer.username)" [disabled]="addedNew">
-              Select reviewer
-            </button>
-          </td>
-        </tr>
-      </tbody>
-      <tbody *ngIf="tab === 'differentRegion' && differentRegion">
-        <tr class="table-active d-flex" *ngFor="let reviewer of differentRegion; let i = index">
           <th class="col-md-1">{{i+1}}</th>
           <td class="col-md-2">{{reviewer.name}}</td>
           <td class="col-md-2">{{reviewer.surname}}</td>

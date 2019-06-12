@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PublishService } from 'src/app/services/publish/publish.service';
 import { ToastrService } from 'ngx-toastr';
+import { UtilService } from './../../services/util/util.service';
 
 @Component({
   selector: 'app-choose-new-reviewer',
@@ -23,14 +24,16 @@ export class ChooseNewReviewerComponent implements OnInit {
 
   addedNew: boolean;
   newReviewer: any;
+  username: any;
 
   constructor(
     private route: ActivatedRoute,
     private publishService: PublishService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private utilService: UtilService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.route.params.subscribe(
       params => {
         this.taskId = params['taskId'];
@@ -40,6 +43,7 @@ export class ChooseNewReviewerComponent implements OnInit {
     this.newReviewer = null;
     this.addedNew = false;
     this.selectedReviewers = [];
+    this.username = await this.utilService.getUsername();
     this.getReviewers();
   }
 
@@ -49,9 +53,9 @@ export class ChooseNewReviewerComponent implements OnInit {
         console.log(result)
         this.requiredReviewers = result.numberOfReviewers;
         this.all = result.all;
+        this.all = this.all.filter(element => element.username != this.username);
         this.area = result.area;
-        this.similar = result.similar;
-        this.differentRegion = result.differentRegion;
+        this.area = this.area.filter(element => element.username != this.username);
         for (let reviewerUsername of result.choosenReviewers) { 
           let obj = {
             "username": reviewerUsername,
