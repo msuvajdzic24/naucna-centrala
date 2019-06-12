@@ -22,6 +22,8 @@ public class AssignDoiService implements JavaDelegate {
 		String doi = "10.1000/" + article.getId();
 		article.setDoi(doi);
 		
+		System.out.println("Dodeljivanje doi-a zavrseno!");
+		
 	}
 
 }
